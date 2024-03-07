@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { auth } from "../firebase";
 const useAuth = () => {
   const [user, setUser] = useState(null);
-  const [isLoggedIn, setIsLoggedin] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      setIsLoggedin(user && user.id ? true : false);
+      setIsLoggedIn(user && user.uid ? true : false);
       setUser(user);
     });
   });
