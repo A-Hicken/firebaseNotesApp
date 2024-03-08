@@ -39,10 +39,8 @@ const TodoList = () => {
     onSnapshot(q, (querySnapshot) => {
       const ar = [];
       querySnapshot.forEach((doc) => {
-        console.log(doc);
         ar.push({ id: doc.id, ...doc.data() });
       });
-      console.log(ar);
       setTodos(ar);
     });
   };
