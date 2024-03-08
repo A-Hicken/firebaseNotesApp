@@ -8,6 +8,7 @@ const useAuth = () => {
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       setIsLoggedIn(user && user.uid ? true : false);
+      console.log(user);
       setUser(user);
     });
   });

@@ -7,6 +7,7 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 
+//toggle complete
 const toggleTodoStatus = async ({ docId, status }) => {
   try {
     const todoRef = doc(db, "todo", docId);
@@ -18,12 +19,13 @@ const toggleTodoStatus = async ({ docId, status }) => {
   }
 };
 //add a todo
-const AddTodo = async ({ userId, title, description, status }) => {
+const addTodo = async ({ userId, title, description, status }) => {
   try {
     await addDoc(collection(db, "todo"), {
       user: userId,
       title: title,
       description: description,
+      status: status,
       createdAt: new Date().getTime(),
     });
   } catch (err) {}
@@ -50,4 +52,4 @@ const deleteTodo = async (docId) => {
   }
 };
 
-export { AddTodo, toggleTodoStatus, deleteTodo, updateTodo };
+export { addTodo, toggleTodoStatus, deleteTodo, updateTodo };
